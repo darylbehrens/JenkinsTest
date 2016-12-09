@@ -21,7 +21,9 @@ let Build app guid version dir =
 
 let Restore path =
     !! "src/**/packages.config"
-        |> Seq.iter (RestorePackage (fun p -> { p with OutputPath = path }))
+        |> Seq.iter (RestorePackage (fun p -> { p with 
+                                                    OutputPath = path 
+                                                    ToolPath = "C:\tools\nuget"  }))
 
 type Project = { Project : string; Version : string; }
 let deployableApps = 
